@@ -74,6 +74,30 @@ def starting():
 
         st.plotly_chart(fig, use_container_width=True)
 
+        if graph == 'Treemap':
+            st.title(':blue[_Treemap_]')
+            fig1 = px.treemap(df, path=[px.Constant('India'), 'State', 'District'], values='Population', width=1200,
+                              height=800)
+            st.plotly_chart(fig1, use_container_width=True)
+        else:
+            st.title(':blue[_Sunburst   _]')
+            st.latex(r'''
+            \bullet\text{Double Click On State To View Specific State Completely                                                                               }
+            ''')
+            st.markdown('''
+            <style>
+            .katex-html {
+                text-align: left;
+            }
+            </style>''',
+                        unsafe_allow_html=True
+                        )
+
+            fig2 = px.sunburst(df, path=[px.Constant('India'), 'State', 'District', 'Male', 'Female'],
+                               values='Population', width=1400, height=1000, hover_name='District',
+                               color='literacy_rate')
+            st.plotly_chart(fig2, use_container_width=True)
+
 
 plot = st.sidebar.button('Plot Graph')
 
