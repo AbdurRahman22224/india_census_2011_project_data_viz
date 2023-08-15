@@ -80,7 +80,7 @@ def starting():
                               height=800)
             st.plotly_chart(fig1, use_container_width=True)
         else:
-            st.title(':blue[_Sunburst   _]')
+            st.title(':blue[_Sunburst_]')
             st.latex(r'''
             \bullet\text{Double Click On State To View Specific State Completely                                                                               }
             ''')
